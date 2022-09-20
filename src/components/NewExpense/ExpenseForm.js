@@ -6,6 +6,28 @@ const ExpenseForm = () => {
   const [enteredAmount, setEnteredAmount] = useState(''); 
   const [enteredDate, setEnteredDate] = useState(''); 
 
+  /* 
+  
+  using one state instead might require that you create an 
+  object that updates all three elements at the time like this
+
+  const [userInput, setUserInput] = useState({
+    enteredTitle: '',
+    enteredAmount: '',
+    enteredDate: ''
+  });
+
+  and then create a function such as an event handler
+
+  const titleChangeHandler = (event) => {
+    setUserInput({
+      ...userInput
+      enteredTitle: event.target.value,
+    })
+  }
+
+  */
+
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
   };
