@@ -1,35 +1,56 @@
  /* 
   
-  using one state instead might require that you create an 
-  object that updates all three elements at the time like this
+using one state instead might require that you create an 
+object that updates all three elements at the time like this
 
-  const [userInput, setUserInput] = useState({
-    enteredTitle: '',
-    enteredAmount: '',
-    enteredDate: ''
-  });
+const [userInput, setUserInput] = useState({
+  enteredTitle: '',
+  enteredAmount: '',
+  enteredDate: ''
+});
 
-  and then create a function such as an event handler
+and then create a function such as an event handler
 
-  const titleChangeHandler = (event) => {
-    setUserInput({
-      ...userInput,
-      enteredTitle: event.target.value,
-    })
-  }
+const titleChangeHandler = (event) => {
+  setUserInput({
+    ...userInput,
+    enteredTitle: event.target.value,
+  })
+}
 
-  although this is wrong in case we depend on the previous state
+although this is wrong in case we depend on the previous state
 
-  const titleChangeHandler = (event) => {
-    setUserInput((prevState) => {
-      return { ...prevState, enteredTitle: event.target.value }
-    })
-  }
+const titleChangeHandler = (event) => {
+  setUserInput((prevState) => {
+    return { ...prevState, enteredTitle: event.target.value }
+  })
+}
 
-  thi is done like that because the state does not change automatically, 
-  react does not re render the object because a variable changes. Instead, 
-  you need to trigger a function for react to re render the object and update 
-  variable. this is because of the queue that is generated and some actions 
-  are in line before this state gets its turn to change.
+thi is done like that because the state does not change automatically, 
+react does not re render the object because a variable changes. Instead, 
+you need to trigger a function for react to re render the object and update 
+variable. this is because of the queue that is generated and some actions 
+are in line before this state gets its turn to change.
 
-  */
+*/
+
+/*
+
+066 understanding keys
+
+the use of keys is necesary because we need to improve behavior of the page. 
+if no keys are used, react re renders each object of a list instead of adding a single
+element in the element tree, and this is expensive and time consuming. So always 
+include keys in dynamic lists
+
+such as:
+
+<ExpenseItem
+  key={expense.id}
+  title={expense.title}
+  amount={expense.amount}
+  date={expense.date}
+/>
+
+
+*/
