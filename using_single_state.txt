@@ -26,4 +26,10 @@
     })
   }
 
+  thi is done like that because the state does not change automatically, 
+  react does not re render the object because a variable changes. Instead, 
+  you need to trigger a function for react to re render the object and update 
+  variable. this is because of the queue that is generated and some actions 
+  are in line before this state gets its turn to change.
+
   */
